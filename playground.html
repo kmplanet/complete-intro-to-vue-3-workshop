@@ -6,5 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playground — Complete Intro to Vue 3</title>
   </head>
-  <body></body>
+  <body>
+    <h1>hello</h1>
+    <h2>yo</h2>
+    <div id="app">
+      <p v-if="message.length % 2 === 0">Odd: {{ message.toUpperCase() }}</p>
+      <p v-else>Even: {{ message }}</p>
+      <ul v-for="item in listOfNumbers">
+        <li>{{ item.uuid }}</li>
+        <ul>
+          <li v-for="numbers in item.secondList"> {{numbers}}</li>
+        </ul>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            message: "Hello it works",
+            listOfNumbers: [
+              { name: "1", uuid: "94d35518-e278-47bd-8fc8-3bfa2e0e58a2" ,secondList:[1,2,3,4]},
+              { name: "2", uuid: "20406621-26cf-4b45-aaa1-1b0db0f37a25" ,secondList:[1,2,3,4]},
+              { name: "3", uuid: "8c9fa9c9-0f40-477f-8ab1-7f33b061233e" ,secondList:[1,2,3,4]},
+              { name: "4", uuid: "5b1c4beb-11e1-4572-b028-823ec413babd" ,secondList:[1,2,3,4]},
+              { name: "5", uuid: "6f05a739-3662-490c-918e-7f60f245efdf" ,secondList:[1,2,3,4]},
+            ],
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
 </html>
